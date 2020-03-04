@@ -4,7 +4,22 @@ import axios from 'axios';
 const client = axios.create({
   baseURL: 'http://localhost:5000/api/DeviceRecords',
   json: true,
+  transformRequest: [
+    (data) => {
+      /* eslint-disable */
+      /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsForRegex": ["^data"] }]*/
+      try{
+        data.value = parseInt(data.value, 10);
+      }
+      catch(err)
+      {
+
+      }
+      /* eslint-enable */
+      return data;
+    }, ...axios.defaults.transformRequest],
 });
+
 
 export default {
   async execute(method, resource, data) {
