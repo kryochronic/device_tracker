@@ -1,8 +1,14 @@
 import Vue from 'vue';
 import axios from 'axios';
 
+const config = require('../vue-config');
+/* eslint-disable */
+console.log('\n\r**********************\n\r' * 30);
+console.log('The backend configred is :' + config.beDetails.baseURL);
+/* eslint-enable */
 const client = axios.create({
-  baseURL: 'http://localhost:5000/api/DeviceRecords',
+  baseURL: config.beDetails.baseURL,
+  // baseURL: 'http://localhost:5000/api/DeviceRecords',
   json: true,
   transformRequest: [
     (data) => {
